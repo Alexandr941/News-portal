@@ -1,0 +1,15 @@
+u1=User.objects.create_user(username='Alex')
+u2=User.objects.create_user(username='Kate')
+Autor.objects.create(autorUser=u1)
+Category.objects.create(name='first')
+Post.objects.create(author=autor, category_type='NW', title='sometitle', text='somebigtext')
+Post.objects.create(author=autor, category_type='AR', title='sometitle', text='somebigtext')
+P = Post.objects.get(id=1)
+P.postCategory.add(Category.objects.get(id=1))
+Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Autor.objects.get(id=2).autorUser, text='anytextbyautor')
+Comment.objects.get(id=2).like() 
+Comment.objects.get(id=2).raiting
+Comment.objects.get(id=2).dislike()
+a = Autor.objects.get(id=1)
+a.update_rating
+b = Autor.objects.order_by('ratingAutor')[:1]
